@@ -37,13 +37,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_BOARD_SUFFIX := _64
 
-# Binder
-TARGET_USES_64_BIT_BINDER := true
-
-TARGET_CPU_SMP := true
-ENABLE_CPUSETS := true
-ENABLE_SCHEDBOOST := true
-
+# Build
 ALLOW_MISSING_DEPENDENCIES := true
 
 # File systems
@@ -54,13 +48,11 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_BOARD_PLATFORM := exynos5
 TARGET_BOARD_PLATFORM_GPU := mali-g71
 
-# Kernel
+# Kernel - boot
 TARGET_PREBUILT_KERNEL := device/samsung/a40/prebuilt/Image
 BOARD_PREBUILT_DTBOIMAGE := device/samsung/a40/prebuilt/recoverydtbo
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_KERNEL_ARCH := arm64
-
-# Boot
 BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=exynos7904 androidboot.selinux=permissive
@@ -98,17 +90,10 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 
-# Android Verified Boot
-BOARD_AVB_ENABLE := true
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
-
-# Crypto
+# Platform
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
-TW_INCLUDE_CRYPTO := false
-TW_INCLUDE_CRYPTO_FBE := false
 
 # TWRP specific build flags
 TW_DEVICE_VERSION := 0_Kevios12
@@ -117,10 +102,9 @@ RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
-TW_DEFAULT_BRIGHTNESS := 150
+TW_DEFAULT_BRIGHTNESS := 125
 TW_SKIP_COMPATIBILITY_CHECK := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/kernel/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_INCLUDE_NTFS_3G := true
